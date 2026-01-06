@@ -1,23 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkHealth } from "@/lib/db";
 
-// ============================================
-// GET /api/health - Health check endpoint
-// ============================================
 
-/**
- * GET /api/health
- *
- * Response (JSON):
- * {
- *   "status": "ok" | "degraded" | "error",
- *   "timestamp": string,
- *   "services": {
- *     "database": boolean,
- *     "api": boolean
- *   }
- * }
- */
 export async function GET() {
   try {
     const dbHealthy = await checkHealth();

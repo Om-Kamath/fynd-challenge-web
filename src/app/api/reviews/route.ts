@@ -27,26 +27,7 @@ export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders });
 }
 
-// ============================================
-// POST /api/reviews - Submit a new review
-// ============================================
 
-/**
- * POST /api/reviews
- *
- * Request Body (JSON):
- * {
- *   "rating": number (1-5),
- *   "review": string (optional, max 5000 chars)
- * }
- *
- * Response (JSON):
- * {
- *   "success": boolean,
- *   "data": { "id": string, "aiResponse": string },
- *   "error": { "code": string, "message": string }
- * }
- */
 export async function POST(request: NextRequest): Promise<NextResponse<ReviewSubmissionResponse>> {
   try {
     // Parse request body
@@ -157,27 +138,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ReviewSub
   }
 }
 
-// ============================================
-// GET /api/reviews - Fetch all reviews
-// ============================================
 
-/**
- * GET /api/reviews
- *
- * Query Parameters:
- * - rating (optional): Filter by star rating (1-5)
- *
- * Response (JSON):
- * {
- *   "success": boolean,
- *   "data": {
- *     "reviews": ReviewRecord[],
- *     "total": number,
- *     "analytics": { ... }
- *   },
- *   "error": { "code": string, "message": string }
- * }
- */
 export async function GET(request: NextRequest): Promise<NextResponse<ReviewListResponse>> {
   try {
     // Fetch reviews and analytics
